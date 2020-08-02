@@ -1,8 +1,14 @@
-import MapGL from "react-map-gl";
+import ReactMapGL, { FlyToInterpolator, NavigationControl } from "react-map-gl";
 
-function Map({ width, height, MAPBOX_TOKEN }) {
+function Map({ width, height, viewport, setViewport, viewportHandler }) {
   return (
-    <MapGL width={width} height={height} mapboxApiAccessToken={MAPBOX_TOKEN} />
+    <ReactMapGL
+    {...viewport}
+      width={width}
+      height={height}
+      mapboxApiAccessToken={process.env.MAPBOX_TOKEN}
+      onViewportChange = {(viewport) => {setViewport(viewport)}}
+    />
   );
 }
 
