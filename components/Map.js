@@ -1,9 +1,15 @@
 import ReactMapGL from "react-map-gl";
-
 import DeckGL from "@deck.gl/react";
 import { ScatterplotLayer } from "@deck.gl/layers";
 import { HeatmapLayer } from "@deck.gl/aggregation-layers";
 import data from "../public/data.json";
+
+  
+
+function Map({ width, height, viewport, setViewport }) {
+
+  const [hoverInfo, setHoverInfo] = React.useState(null);
+
 
   const layers = [
     new ScatterplotLayer({
@@ -14,27 +20,45 @@ import data from "../public/data.json";
       radiusMinPixels: 1,
       radiusMaxPixels: 2,
       getPosition: data => [data.longitude, data.latitude],
-      getFillColor: d => {
-        if(d.deaths > 0){
-          return [255,17,81]
-      } else if(d.major_injuries > 0){
+      getFillColor: data => {
+        if(data.deaths > 0){
+          return [2526,18,25]
+      } else if(data.major_injuries > 0){
         return [255,69,0]
-      } else if(d.minor_injuries > 0){
-        return [255,255,0]
-      }}
+      } else if(data.minor_injuries > 0){
+        return [255,204,51]
+      }},
+      pickable: true,
     }),
     new HeatmapLayer({
       id:"heatmap-layer",
       data: data,
       getPosition: data => [data.longitude,data.latitude],
-      getWeight: data => data.deaths + (data.major_injuries * 0.5) + (data.minor_injuries * 0.25),
-      radiusPixels: 10
+      getWeight: data => (data.deaths*2) + (data.major_injuries * 0.75) + (data.minor_injuries * 0.5),
+      radiusPixels: 20
     })
   ]
 
+  function getTooltip({object}) {
+  if (!object) {
+    return null;
+  }
+  const deaths = object.deaths;
+  const major = object.major_injuries;
+  const minor = object.minor_injuries;
+
+  if(deaths === 0 && major === 0 && minor === 0){
+    return `No Injuries or Deaths`
+  } else{
+  return `\
+    ${deaths} Deaths,
+    ${major} Major Injuries,
+    ${minor} Minor Injuries,
+    `;
+  }
+}
 
 
-function Map({ width, height, viewport, setViewport }) {
   return (
     <ReactMapGL
     {...viewport}
@@ -43,7 +67,9 @@ function Map({ width, height, viewport, setViewport }) {
       mapStyle="mapbox://styles/przemekp/ckddfi7im0quk1iqf0jui75m0"
       mapboxApiAccessToken={process.env.MAPBOX_TOKEN}
       onViewportChange = {(viewport) => {setViewport(viewport)}} >
-      <DeckGL initialViewState={viewport} layers={layers} />
+      <DeckGL initialViewState={viewport} layers={layers} getTooltip={getTooltip}>
+      )}
+      </DeckGL>
       </ReactMapGL>
   );
 }

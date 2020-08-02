@@ -6,7 +6,7 @@ export default function Home() {
   const [viewport, setViewport] = React.useState({
     latitude: 45.4900,
     longitude: -73.6000,
-    zoom: 11,
+    zoom: 12,
     pitch:30,
     bearing:0
   });
