@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import DisplayAPI from "../components/Test";
 
 export default function Home({ API }) {
+  let test_key = process.env.API_KEY_TEST;
   return (
     <div className={styles.container}>
       <Head>
@@ -11,7 +12,8 @@ export default function Home({ API }) {
       </Head>
       {/* <div>{API}</div> */}
       {/* <DisplayAPI /> */}
-      <div>{process.env.API_KEY_TEST}</div>
+
+      <div>API Key is: {test_key}</div>
     </div>
   );
 }
