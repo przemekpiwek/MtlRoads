@@ -11,5 +11,8 @@
     "next": "9.5.1",
     "react": "16.13.1",
     "react-dom": "16.13.1"
+  },
+  "devDependencies": {
+    "convert-csv-to-json": "^0.0.15"
   }
 }
