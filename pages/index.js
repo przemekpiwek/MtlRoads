@@ -2,8 +2,12 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import DisplayAPI from "../components/Test";
 
-export default function Home({ API }) {
+export default function Home() {
   let test_key = process.env.API_KEY_TEST;
+  console.log(test_key);
+  setTimeout(() => {
+    console.log({ test_key });
+  }, 5000);
   return (
     <div className={styles.container}>
       <Head>
