@@ -11,7 +11,7 @@ export default function Home({ API }) {
       </Head>
       {/* <div>{API}</div> */}
       {/* <DisplayAPI /> */}
-      <div>YEET</div>
+      <div>{process.env.API_KEY_TEST}</div>
     </div>
   );
 }
