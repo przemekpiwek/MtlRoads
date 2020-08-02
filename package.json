@@ -10,11 +10,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@deck.gl/layers": "^8.2.4",
     "next": "9.5.1",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
   "devDependencies": {
+    "@deck.gl/core": "^8.2.4",
     "convert-csv-to-json": "^0.0.15",
     "deck.gl": "^8.2.4",
     "react-map-gl": "^5.2.7"

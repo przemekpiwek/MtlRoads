@@ -1021,7 +1021,7 @@
     "@math.gl/web-mercator" "^3.2.1"
     d3-hexbin "^0.2.1"
 
-"@deck.gl/core@8.2.4":
+"@deck.gl/core@8.2.4", "@deck.gl/core@^8.2.4":
   version "8.2.4"
   resolved "https://registry.yarnpkg.com/@deck.gl/core/-/core-8.2.4.tgz#a21d1815e9f773c043b8c29a1b7a92eff86d367c"
   integrity sha512-IPiQWnVkkhhT8JNaxjHpZCUWTgj2FzaqZxvT0Thl9eB25Hs67PRkohS1q1Yw6R7g1QABAE61U9ML0N2rK5JjmA==
@@ -1071,7 +1071,7 @@
     d3-dsv "^1.0.8"
     expression-eval "^2.0.0"
 
-"@deck.gl/layers@8.2.4":
+"@deck.gl/layers@8.2.4", "@deck.gl/layers@^8.2.4":
   version "8.2.4"
   resolved "https://registry.yarnpkg.com/@deck.gl/layers/-/layers-8.2.4.tgz#51d03fd0bc8fc46b797c42756113fce24cb79fe3"
   integrity sha512-AsrqN+2tr0IsxgRVMXQfU/2z2a/xBdKBHGkfeL+QDS0hme29pQLRwIIQFh0YvfBdafCJrQZxDlDwQjDF7UrRog==
