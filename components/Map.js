@@ -6,6 +6,9 @@ import data from "../public/data.json";
 import InfoPanel from '../components/InfoPanel'
 
 
+const {API_KEY} = process.env
+console.log(API_KEY)
+
 function Map({ width, height, viewport, setViewport }) {
   const [hoverInfo, setHoverInfo] = React.useState(null);
   const layers = [
@@ -74,3 +77,6 @@ function Map({ width, height, viewport, setViewport }) {
 }
 
 export default Map;
+
+
+//
