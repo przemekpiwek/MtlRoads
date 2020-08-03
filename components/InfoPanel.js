@@ -2,10 +2,16 @@ import styled from 'styled-components'
 
 function InfoPanel(){
     const [isVisible, setIsVisible] = React.useState(true)
+    const exitRef = React.useRef(null)
+
+
+function clickHandler(e){
+    setIsVisible(false)
+}
 
     return(
-        <Container>
-            <Button>X</Button>
+        <Container style={{display: isVisible ? "flex" : "none"}}>
+            <Button onClick={(() => setIsVisible(false))}>X</Button>
             <Header>
                 Montreal's Most Dangerous Roads
             </Header>
