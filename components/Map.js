@@ -7,10 +7,7 @@ import InfoPanel from '../components/InfoPanel'
 
 
 function Map({ width, height, viewport, setViewport }) {
-
   const [hoverInfo, setHoverInfo] = React.useState(null);
-
-
   const layers = [
     new ScatterplotLayer({
       id: 'scatterplot-layer',
@@ -65,11 +62,11 @@ function Map({ width, height, viewport, setViewport }) {
       width={width}
       height={height}
       mapStyle="mapbox://styles/przemekp/ckddfi7im0quk1iqf0jui75m0"
-      mapboxApiAccessToken={process.env.MAPBOX_TOKEN}
+      mapboxApiAccessToken={process.env.API_KEY}
       onViewportChange = {(viewport) => {setViewport(viewport)}} >
       <DeckGL initialViewState={viewport} layers={layers} getTooltip={getTooltip}>
       )}
-                  <InfoPanel style={{width:"100px", height: "100px", background:"red", position:"absolute"}}/>
+      <InfoPanel style={{width:"100px", height: "100px", background:"red", position:"absolute"}}/>
       </DeckGL>
       </ReactMapGL>
       </>
@@ -77,3 +74,6 @@ function Map({ width, height, viewport, setViewport }) {
 }
 
 export default Map;
+
+
+//
