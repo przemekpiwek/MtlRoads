@@ -3,8 +3,8 @@ import DeckGL from "@deck.gl/react";
 import { ScatterplotLayer } from "@deck.gl/layers";
 import { HeatmapLayer } from "@deck.gl/aggregation-layers";
 import data from "../public/data.json";
+import InfoPanel from '../components/InfoPanel'
 
-  
 
 function Map({ width, height, viewport, setViewport }) {
 
@@ -25,7 +25,7 @@ function Map({ width, height, viewport, setViewport }) {
           return [2526,18,25]
       } else if(data.major_injuries > 0){
         return [255,69,0]
-      } else if(data.minor_injuries > 0){
+      } else if(data.minor_injuries >= 0){
         return [255,204,51]
       }},
       pickable: true,
@@ -58,8 +58,8 @@ function Map({ width, height, viewport, setViewport }) {
   }
 }
 
-
   return (
+    <>
     <ReactMapGL
     {...viewport}
       width={width}
@@ -69,8 +69,10 @@ function Map({ width, height, viewport, setViewport }) {
       onViewportChange = {(viewport) => {setViewport(viewport)}} >
       <DeckGL initialViewState={viewport} layers={layers} getTooltip={getTooltip}>
       )}
+                  <InfoPanel style={{width:"100px", height: "100px", background:"red", position:"absolute"}}/>
       </DeckGL>
       </ReactMapGL>
+      </>
   );
 }
 
