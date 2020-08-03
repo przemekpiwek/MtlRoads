@@ -4,8 +4,6 @@ import { ScatterplotLayer } from "@deck.gl/layers";
 import { HeatmapLayer } from "@deck.gl/aggregation-layers";
 import data from "../public/data.json";
 import InfoPanel from '../components/InfoPanel'
-import getConfig from 'next/config'
-const {serverRuntimeConfig} = getConfig()
 
 
 function Map({ width, height, viewport, setViewport }) {
@@ -64,7 +62,7 @@ function Map({ width, height, viewport, setViewport }) {
       width={width}
       height={height}
       // mapStyle="mapbox://styles/przemekp/ckddfi7im0quk1iqf0jui75m0"
-      mapboxApiAccessToken={serverRuntimeConfig.API_KEY}
+      mapboxApiAccessToken={process.env.API_KEY}
       onViewportChange = {(viewport) => {setViewport(viewport)}} >
       <DeckGL initialViewState={viewport} layers={layers} getTooltip={getTooltip}>
       )}
