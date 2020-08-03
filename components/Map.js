@@ -61,7 +61,7 @@ function Map({ width, height, viewport, setViewport }) {
     {...viewport}
       width={width}
       height={height}
-      mapStyle="mapbox://styles/przemekp/ckddfi7im0quk1iqf0jui75m0"
+      // mapStyle="mapbox://styles/przemekp/ckddfi7im0quk1iqf0jui75m0"
       mapboxApiAccessToken={process.env.API_KEY}
       onViewportChange = {(viewport) => {setViewport(viewport)}} >
       <DeckGL initialViewState={viewport} layers={layers} getTooltip={getTooltip}>
