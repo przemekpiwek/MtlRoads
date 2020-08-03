@@ -6,10 +6,7 @@ import data from "../public/data.json";
 import InfoPanel from '../components/InfoPanel'
 
 
-const {API_KEY} = process.env
-console.log(API_KEY)
-
-function Map({ width, height, viewport, setViewport }) {
+function Map({ width, height, viewport, setViewport, API }) {
   const [hoverInfo, setHoverInfo] = React.useState(null);
   const layers = [
     new ScatterplotLayer({
@@ -64,8 +61,8 @@ function Map({ width, height, viewport, setViewport }) {
     {...viewport}
       width={width}
       height={height}
-      // mapStyle="mapbox://styles/przemekp/ckddfi7im0quk1iqf0jui75m0"
-      mapboxApiAccessToken={API_KEY}
+      mapStyle="mapbox://styles/przemekp/ckddfi7im0quk1iqf0jui75m0"
+      mapboxApiAccessToken={process.env.NEXT_PUBLIC_TX}
       onViewportChange = {(viewport) => {setViewport(viewport)}} >
       <DeckGL initialViewState={viewport} layers={layers} getTooltip={getTooltip}>
       )}
