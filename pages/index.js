@@ -1,17 +1,15 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import Map from "../components/Map";
 
 
-export default function Home() {
+export default function Home({ data }) {
   const [viewport, setViewport] = React.useState({
-    latitude: 45.4900,
-    longitude: -73.6000,
+    latitude: 45.49,
+    longitude: -73.6,
     zoom: 12,
-    pitch:30,
-    bearing:0
+    pitch: 30,
+    bearing: 0,
   });
-
 
   return (
     <>
@@ -23,10 +21,20 @@ export default function Home() {
         <Map
           width={"100vw"}
           height={"100vh"}
+          token={data.key}
           viewport={viewport}
           setViewport={setViewport}
         />
-</div>
-  </>
+      </div>
+    </>
   );
 }
+
+export const getServerSideProps = async () => {
+  const response = await fetch(`${env.process.PROD_URL}api/key`);
+  const data = await response.json();
+
+  return {
+    props: { data },
+  };
+};
